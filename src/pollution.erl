@@ -28,7 +28,7 @@ addStation(Monitor, Name, Cords) when is_tuple(Cords), is_list(Name) ->
       measuredValues := (gMeasuredValues(Monitor))#{gID(Monitor) => []},
       id => gID(Monitor) + 1
     }};
-    false -> {error, "starion already exisists"}
+    false -> {error, "Station already exisists"}
   end;
 addStation(_, _, _) -> {error, "Wrong arguments"}.
 
@@ -72,6 +72,7 @@ removeValue(Monitor, StationID, Date, Type) when is_list(StationID), is_tuple(Da
     }};
     error -> {ok, Monitor}
   end;
+
 removeValue(Monitor, StationID, Date, Type) when is_tuple(StationID), is_tuple(Date), is_list(Type) ->
   case maps:find(StationID, gStationsCords(Monitor)) of
     {ok, ID} ->
@@ -81,50 +82,62 @@ removeValue(Monitor, StationID, Date, Type) when is_tuple(StationID), is_tuple(D
         }
       }};
     error -> {ok, Monitor}
-  end.
+  end;
+
+removeValue(_, _, _, _) -> {error, "Wrong arguments"}.
 
 getOneValue(Monitor, StationID, Date, Type) when is_tuple(StationID), is_tuple(Date), is_list(Type) ->
-  case maps:find(StationID, gStationsCords(Monitor)) of
+  case maps:find(StationID, gStationsNames(Monitor)) of
     {ok, ID} ->
-      [H | _] = [X || X <- maps:get(ID, gMeasuredValues(Monitor)), {gMeasureType(X), gMeasureDate(X)} =:= {Type, Date}],
-      H;
+      case [X || X <- maps:get(ID, gMeasuredValues(Monitor)), {gMeasureType(X), gMeasureDate(X)} =:= {Type, Date}] of
+        [H | _] -> {ok, gMeasureValue(H)};
+        _ -> {ok, nothing}
+      end;
     error -> {error, "Station doesn't exist"}
   end;
+
 getOneValue(Monitor, StationID, Date, Type) when is_list(StationID), is_tuple(Date), is_list(Type) ->
   case maps:find(StationID, gStationsNames(Monitor)) of
     {ok, ID} ->
-      [H | _] = [X || X <- maps:get(ID, gMeasuredValues(Monitor)), {gMeasureType(X), gMeasureDate(X)} =:= {Type, Date}],
-      H;
+      case [X || X <- maps:get(ID, gMeasuredValues(Monitor)), {gMeasureType(X), gMeasureDate(X)} =:= {Type, Date}] of
+        [H | _] -> {ok, gMeasureValue(H)};
+        _ -> {ok, nothing}
+      end;
     error -> {error, "Station doesn't exist"}
   end;
+
 getOneValue(_, _, _, _) -> {error, "Wrong arguments"}.
 
 getStationMean(Monitor, StationID, Type) when is_list(StationID), is_list(Type) ->
   case maps:find(StationID, gStationsNames(Monitor)) of
     {ok, ID} ->
-      calcMean(maps:get(ID, gMeasuredValues(Monitor)), Type);
+      {ok, calcMean(lists:filter(fun(X) -> gMeasureType(X) =:= Type end, maps:get(ID, gMeasuredValues(Monitor))))};
     error -> {error, "Station doesn't exist"}
   end;
+
 getStationMean(Monitor, StationID, Type) when is_tuple(StationID), is_list(Type) ->
   case maps:find(StationID, gStationsCords(Monitor)) of
     {ok, ID} ->
-      calcMean(maps:get(ID, gMeasuredValues(Monitor)), Type);
+      {ok, calcMean(lists:filter(fun(X) -> gMeasureType(X) =:= Type end, maps:get(ID, gMeasuredValues(Monitor))))};
     error -> {error, "Station doesn't exist"}
   end;
+
 getStationMean(_, _, _) -> {error, "Wrong arguments"}.
 
 getDailyMean(Monitor, Day, Type) when is_integer(Day), is_list(Type) ->
-  calcMean(
+  {ok, calcMean(
     lists:filter(fun(Y) ->
-      gDay(gMeasureDate(Y)) =:= Day end,
+      {gDay(gMeasureDate(Y)), gMeasureType(Y)} =:= {Day, Type} end,
       lists:flatten(
         [X || {_, X} <- maps:to_list(gMeasuredValues(Monitor))])
-    ), Type);
+    ))};
+
 getDailyMean(_, _, _) -> {error, "Wrong arguments"}.
 
 getMaximumGradientStation(Monitor, Type) when is_list(Type) ->
-  getMax([{Name, calcGradient(lists:filter(fun(Y) ->
-    gMeasureType(Y) =:= Type end, maps:get(X, gMeasuredValues(Monitor))))} || {Name, X} <- maps:to_list(gStationsNames(Monitor))]);
+  {ok, getMax([{Name, calcGradient(lists:filter(fun(Y) ->
+    gMeasureType(Y) =:= Type end, maps:get(X, gMeasuredValues(Monitor))))} || {Name, X} <- maps:to_list(gStationsNames(Monitor))])};
+
 getMaximumGradientStation(_, _) -> {error, "Wrong arguments"}.
 
 %% Sub Functions
@@ -144,8 +157,9 @@ gID(Monitor) ->
 gMeasureType(Measure) ->
   maps:get(type, Measure).
 
-gMeasureValue(Measure) ->
-  maps:get(value, Measure).
+gMeasureValue(Measure) when is_map(Measure) ->
+  maps:get(value, Measure);
+gMeasureValue(_) -> nothing.
 
 gMeasureDate(Measure) ->
   maps:get(date, Measure).
@@ -160,17 +174,13 @@ gDay(Date) ->
   {{_, _, Day}, {_, _, _}} = Date,
   Day.
 
-calcMean(Measures, Type) ->
+calcMean(Measures) ->
   case length(Measures) of
     0 ->
-      0;
+      nothing;
     Len ->
       lists:foldl(
-        fun(X, Acc) ->
-          case gMeasureType(X) =:= Type of
-            true -> Acc + gMeasureValue(X);
-            false -> Acc end
-        end, 0, Measures) / Len
+        fun(X, Acc) -> Acc + gMeasureValue(X) end, 0, Measures) / Len
   end.
 
 calcGradient(Values) ->
@@ -185,7 +195,6 @@ grad([H1, H2 | T], N, Acc) ->
   grad(T, N, Acc + abs(gMeasureValue(H1) - gMeasureValue(H2)) / N);
 grad(_, _, Acc) ->
   Acc.
-
 
 getMax([H | T]) ->
   getMax_(T, H);
