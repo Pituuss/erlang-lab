@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2334f12a-e170-4d3b-94c2-f7c99bbaa527" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/pollution.erl" afterPath="$PROJECT_DIR$/src/pollution.erl" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/pollution_test.erl" afterPath="$PROJECT_DIR$/src/pollution_test.erl" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,8 +23,8 @@
           <file leaf-file-name="pollution_test.erl" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/pollution_test.erl">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="851">
-                  <caret line="162" column="96" lean-forward="false" selection-start-line="162" selection-start-column="96" selection-end-line="162" selection-end-column="96" />
+                <state relative-caret-position="830">
+                  <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -50,7 +50,7 @@
           <file leaf-file-name="pollution.erl" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/pollution.erl">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
+                <state relative-caret-position="333">
                   <caret line="187" column="10" lean-forward="true" selection-start-line="187" selection-start-column="10" selection-end-line="187" selection-end-column="10" />
                   <folding />
                 </state>
@@ -295,12 +295,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523908542599</updated>
       <workItem from="1523908549207" duration="7374000" />
-      <workItem from="1523917949300" duration="7726000" />
+      <workItem from="1523917949300" duration="7802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15100000" />
+    <option name="totallyTimeSpent" value="15176000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="1920" height="1174" extended-state="6" />
@@ -382,8 +382,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pollution_test.erl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="162" column="96" lean-forward="false" selection-start-line="162" selection-start-column="96" selection-end-line="162" selection-end-column="96" />
+        <state relative-caret-position="830">
+          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
           <folding />
         </state>
       </provider>

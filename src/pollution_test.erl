@@ -161,10 +161,3 @@ get_maximum_gradient_test() ->
   ?assertEqual({ok, {"Station3", 0}}, pollution:getMaximumGradientStation(Monitor01, "TEMP")),
   ?assertEqual({ok, {"Station2", 40.0}}, pollution:getMaximumGradientStation(Monitor6, "TEMP")),
   ?assertEqual({ok, {"Station1", 33.0}}, pollution:getMaximumGradientStation(Monitor3, "TEMP")).
-
-
-
-
-
-
-
