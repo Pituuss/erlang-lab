@@ -44,31 +44,31 @@ server({ok, Monitor}) ->
     {request, add_station, Pid, Name, Cords} ->
       NewMonitor = pollution:addStation(Monitor, Name, Cords),
       Pid ! {reply, ok},
-      server(NewMonitor);
+      pollution_server:server(NewMonitor);
     {request, add_value, Pid, ID, Date, Type, Value} ->
       NewMonitor = pollution:addValue(Monitor, ID, Date, Type, Value),
       Pid ! {reply, ok},
-      server(NewMonitor);
+      pollution_server:server(NewMonitor);
     {request, remove_value, Pid, ID, Date, Type} ->
       NewMonitor = pollution:removeValue(Monitor, ID, Date, Type),
       Pid ! {reply, ok},
-      server(NewMonitor);
+      pollution_server:server(NewMonitor);
     {request, get_one_val, Pid, ID, Date, Type} ->
       {ok, Val} = pollution:getOneValue(Monitor, ID, Date, Type),
       Pid ! {reply, Val},
-      server({ok, Monitor});
+      pollution_server:server({ok, Monitor});
     {request, get_station_mean, Pid, ID, Type} ->
       {ok, Val} = pollution:getStationMean(Monitor, ID, Type),
       Pid ! {reply, Val},
-      server({ok, Monitor});
+      pollution_server:server({ok, Monitor});
     {request, get_daily_mean, Pid, Day, Type} ->
       {ok, Val} = pollution:getDailyMean(Monitor, Day, Type),
       Pid ! {reply, Val},
-      server({ok, Monitor});
+      pollution_server:server({ok, Monitor});
     {request, get_max_grad, Pid, Type} ->
       {ok, Val} = pollution:getMaximumGradientStation(Monitor, Type),
       Pid ! {reply, Val},
-      server({ok, Monitor})
+      pollution_server:server({ok, Monitor})
   end.
 
 %% client
