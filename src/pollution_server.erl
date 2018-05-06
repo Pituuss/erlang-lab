@@ -1,8 +1,31 @@
--module(pollution).
--author("Piotr Wojtyś").
+%%%-------------------------------------------------------------------
+%%% @author pituuss
+%%% @copyright (C) 2018, <COMPANY>
+%%% @doc
+%%%
+%%% @end
+%%% Created : 19. Apr 2018 1:24 PM
+%%%-------------------------------------------------------------------
+-module(pollution_server).
+-author("pituuss").
 
 %% API
+%%% Client
 -export([
+  start/0,
+  stop/0,
+  addStation/2,
+  addValue/4,
+  removeValue/3,
+  getOneValue/3,
+  getStationMean/2,
+  getDailyMean/2,
+  getMaximumGradientStation/1
+]).
+
+%%% Server
+-export([
+  init/0,
   createMonitor/0,
   addStation/3,
   addValue/5,
@@ -10,12 +33,50 @@
   getOneValue/4,
   getStationMean/3,
   getDailyMean/3,
-  getMaximumGradientStation/2,
-  unpack/1
+  getMaximumGradientStation/2
 ]).
 
-unpack({_, Monitor}) when is_map(Monitor) ->
-  Monitor.
+start() ->
+  register(pollutionServer, spawn(?MODULE, init, [])).
+
+stop() ->
+  pollutionServer ! shut_down.
+
+init() ->
+  server(createMonitor()).
+
+server({ok, Monitor}) ->
+  receive
+    {shut_down, Pid} -> Pid ! {reply, ok};
+    {request, add_station, Pid, Name, Cords} ->
+      NewMonitor = addStation(Monitor, Name, Cords),
+      Pid ! {reply, ok},
+      server(NewMonitor);
+    {request, add_value, Pid, ID, Date, Type, Value} ->
+      NewMonitor = addValue(Monitor, ID, Date, Type, Value),
+      Pid ! {reply, ok},
+      server(NewMonitor);
+    {request, remove_value, Pid, ID, Date, Type} ->
+      NewMonitor = removeValue(Monitor, ID, Date, Type),
+      Pid ! {reply, ok},
+      server(NewMonitor);
+    {request, get_one_val, Pid, ID, Date, Type} ->
+      {ok, Val} = getOneValue(Monitor, ID, Date, Type),
+      Pid ! {reply, Val},
+      server({ok, Monitor});
+    {request, get_station_mean, Pid, ID, Type} ->
+      {ok, Val} = getStationMean(Monitor, ID, Type),
+      Pid ! {reply, Val},
+      server({ok, Monitor});
+    {request, get_daily_mean, Pid, Day, Type} ->
+      {ok, Val} = getDailyMean(Monitor, Day, Type),
+      Pid ! {reply, Val},
+      server({ok, Monitor});
+    {request, get_max_grad, Pid, Type} ->
+      {ok, Val} = getMaximumGradientStation(Monitor, Type),
+      Pid ! {reply, Val},
+      server({ok, Monitor})
+  end.
 
 createMonitor() ->
   {ok, #{stationsNames => #{}, stationsCords => #{}, measuredValues => #{}, id => 0}}.
@@ -48,7 +109,6 @@ addValue(Monitor, StationID, Date, Type, Value) when is_list(StationID), is_list
       {error, "Station doesn't exist"}
   end;
 addValue(_, _, _, _, _) -> {error, "Wrong arguments"}.
-
 
 addValue_(Monitor, ID, Date, Type, Value) ->
   case not lists:foldl(fun({X, Y}, ACC) ->
@@ -207,3 +267,47 @@ getMax_([H | T], Max) ->
   end;
 getMax_([], Max) ->
   Max.
+
+%% client
+
+addStation(Name, Cords) ->
+  pollutionServer ! {request, add_station, self(), Name, Cords},
+  receive
+    {reply, Reply} -> Reply
+  end.
+
+addValue(ID, Date, Type, Value) ->
+  pollutionServer ! {request, add_value, self(), ID, Date, Type, Value},
+  receive
+    {reply, Reply} -> Reply
+  end.
+
+removeValue(ID, Date, Type) ->
+  pollutionServer ! {request, remove_station, self(), ID, Date, Type},
+  receive
+    {reply, Reply} -> Reply
+  end.
+
+getOneValue(ID, Date, Type) ->
+  pollutionServer ! {request, get_one_val, self(), ID, Date, Type},
+  receive
+    {reply, Reply} -> Reply
+  end.
+
+getStationMean(ID, Type) ->
+  pollutionServer ! {request, get_station_mean, self(), ID, Type},
+  receive
+    {reply, Reply} -> Reply
+  end.
+
+getDailyMean(Day, Type) ->
+  pollutionServer ! {request, get_daily_mean, self(), Day, Type},
+  receive
+    {reply, Reply} -> Reply
+  end.
+
+getMaximumGradientStation(Type) ->
+  pollutionServer ! {request, get_max_grad, self(), Type},
+  receive
+    {reply, Reply} -> Reply
+  end.

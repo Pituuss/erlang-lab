@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2334f12a-e170-4d3b-94c2-f7c99bbaa527" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/pollution_server.erl" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/pollution.erl" afterPath="$PROJECT_DIR$/src/pollution.erl" />
+      <change beforePath="$PROJECT_DIR$/src/pollution_test.erl" afterPath="$PROJECT_DIR$/src/pollution_test.erl" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,54 +19,73 @@
     <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5335821">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="pollution_test.erl" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/pollution_test.erl">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="830">
-                  <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="pollution.erl" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/pollution.erl">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="384">
-                  <caret line="48" column="6" lean-forward="false" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
-                  <folding>
-                    <marker date="1523925275878" expanded="true" signature="2103:2937" ph="removeValue/4 -&gt; ..." />
-                    <marker date="1523925275878" expanded="true" signature="5574:5647" ph="gMeasureValue/1 -&gt; ..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="pollution.erl" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/pollution.erl">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="333">
-                  <caret line="187" column="10" lean-forward="true" selection-start-line="187" selection-start-column="10" selection-end-line="187" selection-end-column="10" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="pollution.erl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pollution.erl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding>
+                <marker date="1524135843874" expanded="true" signature="2103:2937" ph="removeValue/4 -&gt; ..." />
+                <marker date="1524135843874" expanded="true" signature="5574:5647" ph="gMeasureValue/1 -&gt; ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pollution_server.erl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pollution_server.erl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+              <folding>
+                <element signature="n#createMonitor#0" expanded="false" />
+                <element signature="n#addValue#0" expanded="false" />
+                <element signature="n#addValue_#0" expanded="false" />
+                <element signature="n#removeValue#0" expanded="false" />
+                <element signature="n#getStationMean#0" expanded="false" />
+                <element signature="n#getDailyMean#0" expanded="false" />
+                <element signature="n#getMaximumGradientStation#0" expanded="false" />
+                <element signature="n#gStationsNames#0" expanded="false" />
+                <element signature="n#gStationsCords#0" expanded="false" />
+                <element signature="n#gMeasuredValues#0" expanded="false" />
+                <element signature="n#gID#0" expanded="false" />
+                <element signature="n#gMeasureType#0" expanded="false" />
+                <element signature="n#gMeasureValue#0" expanded="false" />
+                <element signature="n#gMeasureDate#0" expanded="false" />
+                <element signature="n#gListOfDates#0" expanded="false" />
+                <element signature="n#gListOfTypes#0" expanded="false" />
+                <element signature="n#gDay#0" expanded="false" />
+                <element signature="n#calcMean#0" expanded="false" />
+                <element signature="n#calcGradient#0" expanded="false" />
+                <element signature="n#grad#0" expanded="false" />
+                <element signature="n#getMax#0" expanded="false" />
+                <element signature="n#getMax_#0" expanded="false" />
+                <element signature="n#addStation#1" expanded="false" />
+                <element signature="n#addValue#1" expanded="false" />
+                <element signature="n#removeValue#1" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pollution_test.erl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pollution_test.erl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1548">
+              <caret line="158" column="93" lean-forward="false" selection-start-line="158" selection-start-column="93" selection-end-line="158" selection-end-column="93" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Erlang EUnit Tests" />
+        <option value="Erlang Module" />
       </list>
     </option>
   </component>
@@ -87,6 +109,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/pollution.erl" />
         <option value="$PROJECT_DIR$/src/pollution_test.erl" />
+        <option value="$PROJECT_DIR$/src/pollution_server.erl" />
       </list>
     </option>
   </component>
@@ -97,12 +120,13 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="501" />
-    <option name="y" value="80" />
-    <option name="width" value="1173" />
-    <option name="height" value="872" />
+    <option name="y" value="26" />
+    <option name="width" value="960" />
+    <option name="height" value="1174" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -118,7 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -129,7 +152,20 @@
             <path>
               <item name="Pollution" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pollution" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pollution" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pollution" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pollution" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pollution" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="Pollution" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pollution" type="b2602c69:ProjectViewProjectNode" />
@@ -149,9 +185,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -163,7 +200,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../erlang-lab" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -294,7 +331,10 @@
       <option name="presentableId" value="Default" />
       <updated>1523908542599</updated>
       <workItem from="1523908549207" duration="7374000" />
-      <workItem from="1523917949300" duration="7854000" />
+      <workItem from="1523917949300" duration="8127000" />
+      <workItem from="1524135828614" duration="1605000" />
+      <workItem from="1525604754652" duration="1079000" />
+      <workItem from="1525641501097" duration="4702000" />
     </task>
     <task id="LOCAL-00001" summary="remove empty lines">
       <created>1523925768788</created>
@@ -307,7 +347,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15228000" />
+    <option name="totallyTimeSpent" value="22887000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="1920" height="1174" extended-state="6" />
@@ -321,12 +361,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="517" y="677" width="1172" height="523" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="517" y="677" width="1172" height="523" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10501066" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27238807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -339,6 +379,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292011" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -361,11 +402,39 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/pollution.erl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1524135843874" expanded="true" signature="2103:2937" ph="removeValue/4 -&gt; ..." />
+            <marker date="1524135843874" expanded="true" signature="5574:5647" ph="gMeasureValue/1 -&gt; ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pollution_test.erl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3680">
+          <caret line="160" column="8" lean-forward="false" selection-start-line="160" selection-start-column="8" selection-end-line="160" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pollution.erl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1104">
+          <caret line="48" column="6" lean-forward="false" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+          <folding>
+            <marker date="1524135843874" expanded="true" signature="2103:2937" ph="removeValue/4 -&gt; ..." />
+            <marker date="1524135843874" expanded="true" signature="5574:5647" ph="gMeasureValue/1 -&gt; ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pollution_test.erl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -374,28 +443,62 @@
         <state relative-caret-position="1104">
           <caret line="48" column="6" lean-forward="true" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
           <folding>
-            <marker date="1523925275878" expanded="true" signature="2103:2937" ph="removeValue/4 -&gt; ..." />
-            <marker date="1523925275878" expanded="true" signature="5574:5647" ph="gMeasureValue/1 -&gt; ..." />
+            <marker date="1524135843874" expanded="true" signature="2103:2937" ph="removeValue/4 -&gt; ..." />
+            <marker date="1524135843874" expanded="true" signature="5574:5647" ph="gMeasureValue/1 -&gt; ..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pollution.erl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="48" column="6" lean-forward="false" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+        <state relative-caret-position="345">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <marker date="1523925275878" expanded="true" signature="2103:2937" ph="removeValue/4 -&gt; ..." />
-            <marker date="1523925275878" expanded="true" signature="5574:5647" ph="gMeasureValue/1 -&gt; ..." />
+            <marker date="1524135843874" expanded="true" signature="2103:2937" ph="removeValue/4 -&gt; ..." />
+            <marker date="1524135843874" expanded="true" signature="5574:5647" ph="gMeasureValue/1 -&gt; ..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pollution_test.erl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="830">
-          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+        <state relative-caret-position="1548">
+          <caret line="158" column="93" lean-forward="false" selection-start-line="158" selection-start-column="93" selection-end-line="158" selection-end-column="93" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pollution_server.erl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+          <folding>
+            <element signature="n#createMonitor#0" expanded="false" />
+            <element signature="n#addValue#0" expanded="false" />
+            <element signature="n#addValue_#0" expanded="false" />
+            <element signature="n#removeValue#0" expanded="false" />
+            <element signature="n#getStationMean#0" expanded="false" />
+            <element signature="n#getDailyMean#0" expanded="false" />
+            <element signature="n#getMaximumGradientStation#0" expanded="false" />
+            <element signature="n#gStationsNames#0" expanded="false" />
+            <element signature="n#gStationsCords#0" expanded="false" />
+            <element signature="n#gMeasuredValues#0" expanded="false" />
+            <element signature="n#gID#0" expanded="false" />
+            <element signature="n#gMeasureType#0" expanded="false" />
+            <element signature="n#gMeasureValue#0" expanded="false" />
+            <element signature="n#gMeasureDate#0" expanded="false" />
+            <element signature="n#gListOfDates#0" expanded="false" />
+            <element signature="n#gListOfTypes#0" expanded="false" />
+            <element signature="n#gDay#0" expanded="false" />
+            <element signature="n#calcMean#0" expanded="false" />
+            <element signature="n#calcGradient#0" expanded="false" />
+            <element signature="n#grad#0" expanded="false" />
+            <element signature="n#getMax#0" expanded="false" />
+            <element signature="n#getMax_#0" expanded="false" />
+            <element signature="n#addStation#1" expanded="false" />
+            <element signature="n#addValue#1" expanded="false" />
+            <element signature="n#removeValue#1" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
