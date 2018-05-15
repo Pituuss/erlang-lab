@@ -21,38 +21,64 @@
   getOneValue/3,
   getStationMean/2,
   getDailyMean/2,
-  getMaximumGradientStation/1
-]).
+  getMaximumGradientStation/1,
+  crash/0,
+  start_link/0]).
 
 %%% Server
 -export([
-  init/0
+  init/0,
+  server/1
 ]).
 
 start() ->
   register(pollutionServer, spawn(?MODULE, init, [])).
 
+start_link() ->
+  register(pollutionServer, spawn_link(?MODULE, init, [])).
+
 stop() ->
   pollutionServer ! shut_down.
 
 init() ->
-  server(pollution:createMonitor()).
+  {ok, Monitor} = pollution:createMonitor(),
+  server(Monitor).
 
-server({ok, Monitor}) ->
+server(Monitor) ->
   receive
+    {crash} -> 1 = 0;
     {shut_down, Pid} -> Pid ! {reply, ok};
     {request, add_station, Pid, Name, Cords} ->
       NewMonitor = pollution:addStation(Monitor, Name, Cords),
-      Pid ! {reply, ok},
-      pollution_server:server(NewMonitor);
+%%      io:format("~p~n",[NewMonitor]),
+      case NewMonitor of
+        {ok, NMonitor} ->
+          Pid ! {reply, ok},
+          pollution_server:server(NMonitor);
+        {error, Cause} ->
+          Pid ! {reply, Cause},
+          pollution_server:server(Monitor)
+      end;
     {request, add_value, Pid, ID, Date, Type, Value} ->
       NewMonitor = pollution:addValue(Monitor, ID, Date, Type, Value),
-      Pid ! {reply, ok},
-      pollution_server:server(NewMonitor);
+      case NewMonitor of
+        {ok, NMonitor} ->
+          Pid ! {reply, ok},
+          pollution_server:server(NMonitor);
+        {error, Cause} ->
+          Pid ! {reply, Cause},
+          pollution_server:server(Monitor)
+      end;
     {request, remove_value, Pid, ID, Date, Type} ->
       NewMonitor = pollution:removeValue(Monitor, ID, Date, Type),
-      Pid ! {reply, ok},
-      pollution_server:server(NewMonitor);
+      case NewMonitor of
+        {ok, NMonitor} ->
+          Pid ! {reply, ok},
+          pollution_server:server(NMonitor);
+        {error, Cause} ->
+          Pid ! {reply, Cause},
+          pollution_server:server(Monitor)
+      end;
     {request, get_one_val, Pid, ID, Date, Type} ->
       {ok, Val} = pollution:getOneValue(Monitor, ID, Date, Type),
       Pid ! {reply, Val},
@@ -72,6 +98,9 @@ server({ok, Monitor}) ->
   end.
 
 %% client
+
+crash() ->
+  pollutionServer ! {crash}.
 
 addStation(Name, Cords) ->
   pollutionServer ! {request, add_station, self(), Name, Cords},
